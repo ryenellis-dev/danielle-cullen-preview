@@ -318,17 +318,42 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
   .hero .lede { font-size: 0.98rem; line-height: 1.5; }
   .hero .btn { padding: 13px 18px; }
 }
+
+/* ---- One-page layout (2026-11-22) ---- */
+.anchor { scroll-margin-top: 76px; }
+h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
+.about-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 48px; align-items: start; }
+.sub-block { display: grid; gap: 16px; min-width: 0; }
+.svc { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.svc li { padding: 16px 20px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.svc li:last-child { border-bottom: 0; }
+.svc span { color: var(--muted); font-size: 0.95rem; }
+.res-wrap { display: grid; gap: 40px; }
+.res-wrap .section-head { margin-bottom: 0; }
+.need-box { margin-top: 36px; background: var(--todo-bg); border: 1.5px dashed #D9B97A; border-radius: var(--r); padding: 6px 20px; }
+.need-box summary { cursor: pointer; padding: 12px 0; font-weight: 600; color: var(--todo); }
+.need-box .need-list { padding-bottom: 16px; }
+.nav a[aria-current] { border-bottom-color: var(--sand); color: var(--sage-deep); }
+@media (max-width: 760px) { .about-split { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 36px; } }
+/* Collapse the nav into the menu button a little earlier, since it now has four links. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .nav .btn { display: inline-flex; margin-top: 12px; border-bottom: 1.5px solid var(--sage); }
+  .menu-btn { display: inline-flex; }
+}
 </style>
 </head>
 <body>
 <header class="site-head"><div class="wrap">
-  <a class="brand" href="index.html"><span class="mark" aria-hidden="true">DC</span><span><span class="brand-name">Danielle Cullen<span class="brand-creds">, PMHNP-BC</span></span><span class="brand-sub">Psychiatric Nurse Practitioner</span></span></a>
-  <nav class="nav" id="nav" aria-label="Main"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a class="btn btn-primary btn-small" href="booking.html">Book a visit</a></nav>
-  <a class="btn btn-primary btn-small head-book" href="booking.html">Book a visit</a>
+  <a class="brand" href="#top"><span class="mark" aria-hidden="true">DC</span><span><span class="brand-name">Danielle Cullen<span class="brand-creds">, PMHNP-BC</span></span><span class="brand-sub">Psychiatric Nurse Practitioner</span></span></a>
+  <nav class="nav" id="nav" aria-label="Main"><a href="#about" data-spy="about">About</a><a href="#fees" data-spy="fees">Insurance &amp; fees</a><a href="#resources" data-spy="resources">Resources</a><a href="#contact" data-spy="contact">Contact</a><a class="btn btn-primary btn-small" href="#fees">Book a visit</a></nav>
+  <a class="btn btn-primary btn-small head-book" href="#fees">Book a visit</a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
 </div></header>
 <main>
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-glow" aria-hidden="true"><span class="g1"></span><span class="g2"></span></div>
   <div class="wrap">
     <div class="hero-copy">
@@ -336,8 +361,8 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
       <h1>Thoughtful care, <em>at your pace.</em></h1>
       <p class="lede">Psychiatric evaluation and medication management from a board-certified nurse practitioner who takes the time to listen.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="booking.html#insurance">Book with insurance</a>
-        <a class="btn btn-secondary" href="booking.html#private">Book private pay</a>
+        <a class="btn btn-primary" href="#fees">Book with insurance</a>
+        <a class="btn btn-secondary" href="#fees">Book private pay</a>
       </div>
       <ul class="chips">
         <li>Accepting new patients</li>
@@ -357,73 +382,182 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
   <span><i aria-hidden="true"></i>In crisis? Call or text <a href="tel:988">988</a></span>
 </div></div>
 
-<section class="section tint">
+<!-- ===== About: the practice, services and what she treats ===== -->
+<section class="section tint anchor" id="about">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">How it works</p>
-      <h2>Getting started is simple</h2>
+      <p class="eyebrow">About the practice</p>
+      <h2>Care built around <em>the whole person</em></h2>
+      <p class="muted">A collaborative, holistic approach to psychiatric care, with realistic plans made together.</p>
+      <div class="todo">One or two sentences on what the practice is about, in her words. We'll tighten it.</div>
     </div>
     <div class="grid-3">
-      <div class="card"><span class="step-num">1</span><h3>Book online</h3><p class="muted">Use your insurance, or choose private pay. Pick a time that works.</p></div>
-      <div class="card"><span class="step-num">2</span><h3>Your first visit</h3><p class="muted">We talk through your symptoms, history and goals. Nothing is rushed.</p></div>
-      <div class="card"><span class="step-num">3</span><h3>Your plan</h3><p class="muted">A realistic plan made together, and adjusted as you go.</p></div>
+      <div class="card"><h3>Collaborative</h3><p class="muted">You're part of every decision. Plans are made together.</p></div>
+      <div class="card"><h3>Whole-person</h3><p class="muted">Sleep, stress, health conditions and daily life all count.</p></div>
+      <div class="card"><h3>Realistic</h3><p class="muted">Clear next steps that fit your life, adjusted as you go.</p></div>
     </div>
+
+    <div class="about-split">
+      <div class="sub-block">
+        <h3 class="sub">Services</h3>
+        <ul class="svc">
+          <li><strong>Psychiatric evaluation</strong><span>A full first visit covering symptoms, history and goals.</span></li>
+          <li><strong>Medication management</strong><span>Careful prescribing, regular check-ins and adjustments.</span></li>
+          <li><strong>Solution-focused therapy</strong><span>Short, practical support alongside medication.</span></li>
+          <li><strong>Free phone consult</strong><span>15 minutes to ask questions and see if it's a fit.</span></li>
+        </ul>
+      </div>
+      <div class="sub-block">
+        <h3 class="sub">What I treat</h3>
+        <ul class="tags">
+          <li>Anxiety</li><li>Depression</li><li>ADHD</li><li>Bipolar disorder</li><li>OCD</li><li>Schizophrenia</li><li>Sleep problems</li><li>Mood changes with Parkinson's or dementia</li>
+        </ul>
+        <ul class="facts">
+          <li><strong>Board-certified</strong>Psychiatric &amp; family nurse practitioner</li>
+          <li><strong>20+ years</strong>in healthcare</li>
+          <li><strong>Adults 18+</strong>In person or video</li>
+          <li><strong>Licensed in New York</strong>License #403225</li>
+        </ul>
+      </div>
+    </div>
+
+    
+    <details class="need-box">
+      <summary>What we still need from Danielle for this section</summary>
+      <ol class="need-list">
+        <li><strong>Practice name</strong><span>Just her name, or a practice name? It usually matches the domain she bought.</span></li>
+        <li><strong>Mission line</strong><span>One or two sentences on what the practice stands for.</span></li>
+        <li><strong>Approach</strong><span>Three short values, or approve the ones above.</span></li>
+        <li><strong>Services</strong><span>Confirm the four above, visit lengths, and anything she doesn't treat.</span></li>
+        <li><strong>Who she sees</strong><span>Adults only? Any groups she focuses on?</span></li>
+        <li><strong>Credentials</strong><span>Exactly as they should read, plus any memberships.</span></li>
+        <li><strong>Logo</strong><span>If she has one. The "DC" mark stands in until then.</span></li>
+      </ol>
+    </details>
+    
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">What I treat</p>
-      <h2>Care for adults with</h2>
-    </div>
-    <ul class="tags">
-      <li>Anxiety</li><li>Depression</li><li>ADHD</li><li>Bipolar disorder</li><li>OCD</li><li>Schizophrenia</li><li>Sleep problems</li><li>Mood changes with Parkinson's or dementia</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section tint">
+<!-- ===== Insurance & payment (every booking button lands here until her booking links are in) ===== -->
+<section class="section anchor" id="fees">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Insurance &amp; payment</p>
-      <h2>Two easy ways to pay</h2>
+      <h2>Two easy ways to book</h2>
+      <p class="muted">Not sure which? Call (845) 583-0173 for a free 15-minute phone consult.</p>
     </div>
     <div class="paths">
-      <div class="path">
-        <h3>Using insurance</h3>
-        <ul class="plans"><li>Aetna</li><li>Anthem</li><li>BlueCross BlueShield</li><li>Carelon</li><li>Cigna / Evernorth</li><li>Oscar</li><li>Oxford</li><li>UMR</li><li>UnitedHealthcare</li></ul>
-        <a class="btn btn-primary" href="booking.html#insurance">Book with insurance</a>
+      <div class="path featured" id="insurance">
+        <h3>Book with insurance</h3>
+        <p class="muted">In network with:</p>
+        <ul class="plans"><li>Aetna</li><li>Anthem</li><li>BlueCross BlueShield</li><li>Carelon Behavioral Health</li><li>Cigna / Evernorth</li><li>Oscar Health</li><li>Oxford</li><li>UMR</li><li>UnitedHealthcare</li></ul>
+        <div class="todo">Her insurance booking link. Which service does she use for insurance visits (Headway, Alma, Rula, Grow, or her own EHR)?</div>
+        <a class="btn btn-primary" href="#fees">Check coverage &amp; book →</a>
       </div>
-      <div class="path">
-        <h3>Private pay</h3>
-        <p class="muted">Visa, Mastercard, Amex, Discover and HSA cards accepted.</p>
-        <div class="todo">Private-pay rates for the first visit and follow-ups.</div>
-        <a class="btn btn-secondary" href="booking.html#private">Book private pay</a>
+      <div class="path" id="private">
+        <h3>Book private pay</h3>
+        <p class="muted">No insurance needed. Visa, Mastercard, Amex, Discover and HSA cards accepted.</p>
+        <div>
+          <div class="price-row"><span>First visit (evaluation)</span><span><span class="todo-inline">$ rate</span></span></div>
+          <div class="price-row"><span>Follow-up visit</span><span><span class="todo-inline">$ rate</span></span></div>
+          <div class="price-row"><span>Phone consult, 15 min</span><span>Free</span></div>
+        </div>
+        <div class="todo">Her private-pay rates and booking link (SimplePractice, IntakeQ, Charm, or similar).</div>
+        <a class="btn btn-secondary" href="#fees">Book private pay →</a>
       </div>
+    </div>
+    <div class="faq narrow" style="margin-top:36px">
+      <details><summary>Who do you see?</summary><p>Adults, 18 and older.</p></details>
+      <details><summary>In person or video?</summary><p>Both. The office is in Fishkill, and video visits are available anywhere in New York.</p></details>
+      <details><summary>What happens at the first visit?</summary><p>We talk about what's going on, your history and your goals, then agree on next steps together.</p></details>
+      <details><summary>Cancellations</summary><p><span class="todo-inline">Her cancellation policy (for example, 24 hours notice)</span></p></details>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap narrow" style="display:grid;gap:16px">
-    <p class="eyebrow">About the practice</p>
-    <h2>Collaborative, whole-person care</h2>
-    <ul class="facts">
-      <li><strong>Board-certified</strong>Psychiatric &amp; family nurse practitioner</li>
-      <li><strong>20+ years</strong>in healthcare</li>
-    </ul>
-    <p><a href="about.html">More about the practice →</a></p>
+<!-- ===== Resources ===== -->
+<section class="section tint anchor" id="resources">
+  <div class="wrap res-wrap">
+    <div class="section-head">
+      <p class="eyebrow">Resources</p>
+      <h2>Help and information</h2>
+      <p class="muted">Trusted places for support, between visits or before your first one.</p>
+    </div>
+
+    <div class="res-group">
+      <h3 class="sub">If you need help right now</h3>
+      <div class="crisis-cards">
+        <div class="crisis-card"><span class="big">988</span><strong>Suicide &amp; Crisis Lifeline</strong><span class="muted small">Call or text, 24/7. Veterans press 1.</span></div>
+        <div class="crisis-card"><span class="big">741741</span><strong>Crisis Text Line</strong><span class="muted small">Text HOME, 24/7.</span></div>
+        <div class="crisis-card"><span class="big">911</span><strong>Emergency</strong><span class="muted small">Or go to the nearest emergency room.</span></div>
+      </div>
+      <p class="muted small">This practice is not an emergency service. Messages are not monitored after hours.</p>
+    </div>
+
+    <div class="res-group">
+      <h3 class="sub">Dutchess County</h3>
+      <ul class="res-list">
+        <li><span class="num">(845) 485-9700</span><strong>Dutchess County HELPLINE</strong><p>Call or text, 24/7. Free and confidential.</p></li>
+        <li><span class="num">(845) 486-2849</span><strong>Dutchess County Stabilization Center</strong><p>Walk in any time, day or night. 230 North Road, Poughkeepsie.</p></li>
+      </ul>
+    </div>
+
+    <div class="res-group">
+      <h3 class="sub">Learn more</h3>
+      <ul class="res-list">
+        <li><a href="https://www.nami.org" target="_blank" rel="noopener">NAMI ↗</a><p>Education, support groups and help for families.</p></li>
+        <li><a href="https://www.nimh.nih.gov/health" target="_blank" rel="noopener">National Institute of Mental Health ↗</a><p>Plain-language facts on conditions and treatment.</p></li>
+        <li><a href="https://adaa.org" target="_blank" rel="noopener">Anxiety &amp; Depression Association of America ↗</a><p>Anxiety, depression, OCD and PTSD.</p></li>
+        <li><a href="https://www.dbsalliance.org" target="_blank" rel="noopener">Depression &amp; Bipolar Support Alliance ↗</a><p>Peer support groups for mood conditions.</p></li>
+        <li><a href="https://chadd.org" target="_blank" rel="noopener">CHADD ↗</a><p>ADHD in adults, with tools and support.</p></li>
+        <li><a href="https://iocdf.org" target="_blank" rel="noopener">International OCD Foundation ↗</a><p>Information and treatment guides for OCD.</p></li>
+        <li><a href="https://www.sleepfoundation.org" target="_blank" rel="noopener">Sleep Foundation ↗</a><p>Practical help with sleep problems.</p></li>
+        <li><a href="https://mhanational.org" target="_blank" rel="noopener">Mental Health America ↗</a><p>Free, private screening tools.</p></li>
+      </ul>
+    </div>
+
+    <div class="res-group">
+      <h3 class="sub">Families, caregivers &amp; medications</h3>
+      <ul class="res-list">
+        <li><a href="https://www.parkinson.org" target="_blank" rel="noopener">Parkinson's Foundation ↗</a><p>Mood, memory and other non-motor symptoms. Helpline 1-800-473-4636.</p></li>
+        <li><a href="https://www.alz.org" target="_blank" rel="noopener">Alzheimer's Association ↗</a><p>Dementia care and caregiver support. 24/7 helpline 1-800-272-3900.</p></li>
+        <li><a href="https://medlineplus.gov/druginformation.html" target="_blank" rel="noopener">MedlinePlus Drug Information ↗</a><p>Reliable facts on uses and side effects.</p></li>
+        <li><a href="https://www.goodrx.com" target="_blank" rel="noopener">GoodRx ↗</a><p>Compare prices and coupons at local pharmacies.</p></li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section class="cta-band">
+<!-- ===== Contact ===== -->
+<section class="section anchor" id="contact">
   <div class="wrap">
-    <h2>Ready when you are.</h2>
-    <p>Not sure where to start? Call (845) 583-0173 for a free 15-minute consult.</p>
-    <div class="btn-row" style="justify-content:center">
-      <a class="btn btn-primary" href="booking.html#insurance">Book with insurance</a>
-      <a class="btn btn-secondary" href="booking.html#private">Book private pay</a>
+    <div class="section-head"><p class="eyebrow">Contact</p><h2>Get in touch</h2><p class="muted">Questions before booking? Call, email, or send a note.</p></div>
+    <div class="contact-grid">
+      <div style="display:grid;gap:24px;min-width:0">
+        <ul class="contact-list">
+          <li><div class="label">Phone</div><div class="value"><a href="tel:+18455830173">(845) 583-0173</a></div></li>
+          <li><div class="label">Email</div><div class="value"><span class="todo-inline">hello@her-domain.com</span></div></li>
+          <li><div class="label">Office</div><div class="value"><span class="todo-inline">Street address</span><br>Fishkill, NY 12524</div></li>
+          <li><div class="label">Hours</div><div class="value"><span class="todo-inline">Office hours</span></div></li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-small" href="#fees">Book with insurance</a>
+          <a class="btn btn-secondary btn-small" href="#fees">Book private pay</a>
+        </div>
+      </div>
+      <div style="min-width:0">
+        <form class="card" id="contactForm" novalidate>
+          <h3 style="font-size:1.4rem">Send a note</h3>
+          <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="cContact">Phone or email</label><input id="cContact" name="contact" autocomplete="email" required></div>
+          <div class="field"><label for="cTopic">About</label><select id="cTopic" name="topic"><option>Becoming a new patient</option><option>Insurance question</option><option>Something else</option></select></div>
+          <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message"></textarea></div>
+          <p class="form-note">Please don't include health details. We'll talk about those privately.</p>
+          <button class="btn btn-primary" type="submit">Send</button>
+          <div class="todo ours">On the live site this form sends to her practice email. The demo doesn't send anything.</div>
+        </form>
+        <div class="form-done" id="formDone" hidden>Thanks. We'll get back to you within one business day. (Demo: nothing was sent.)</div>
+      </div>
     </div>
   </div>
 </section>
@@ -431,18 +565,18 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
 
 <footer class="site-foot"><div class="wrap">
   <div><p style="font-family:var(--serif);font-size:1.15rem;color:var(--ink)">Danielle Cullen, PMHNP-BC</p><p>Psychiatric Nurse Practitioner<br>Fishkill, NY 12524</p></div>
-  <div><h3>Visit</h3><ul><li><a href="booking.html#insurance">Book with insurance</a></li><li><a href="booking.html#private">Book private pay</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About the practice</a></li><li><a href="blog.html">Blog (coming soon)</a></li></ul></div>
-  <div><h3>Contact</h3><ul><li><a href="tel:+18455830173">(845) 583-0173</a></li><li><span class="todo-inline">hello@her-domain.com</span></li><li><a href="contact.html">Office &amp; hours</a></li></ul></div>
-  <p class="fine"><strong>In crisis?</strong> Call or text 988, or call 911. This practice is not an emergency service. · <a href="#" data-missing>Privacy</a> · <a href="#" data-missing>Notice of Privacy Practices</a> · <a href="#" data-missing>Good Faith Estimate</a> · © 2026 Danielle Cullen</p>
+  <div><h3>Visit</h3><ul><li><a href="#fees">Book with insurance</a></li><li><a href="#fees">Book private pay</a></li><li><a href="#about">About the practice</a></li><li><a href="#resources">Resources</a></li><li><a href="blog.html">Blog (coming soon)</a></li></ul></div>
+  <div><h3>Contact</h3><ul><li><a href="tel:+18455830173">(845) 583-0173</a></li><li><span class="todo-inline">hello@her-domain.com</span></li><li><a href="#contact">Office &amp; hours</a></li></ul></div>
+  <p class="fine"><strong>In crisis?</strong> Call or text 988, or call 911. This practice is not an emergency service. · <a href="#fees">Privacy</a> · <a href="#fees">Notice of Privacy Practices</a> · <a href="#fees">Good Faith Estimate</a> · © 2026 Danielle Cullen</p>
 </div></footer>
-<div class="book-bar"><a class="btn btn-primary" href="booking.html#insurance">Use insurance</a><a class="btn btn-secondary" href="booking.html#private">Private pay</a></div>
+<div class="book-bar"><a class="btn btn-primary" href="#fees">Use insurance</a><a class="btn btn-secondary" href="#fees">Private pay</a></div>
 <script>
 (function(){
   var root=document.documentElement,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Scroll reveal: sections and cards rise in gently as they enter the screen.
   if(!calm&&'IntersectionObserver' in window){
     root.classList.add('motion');
-    var groups='.section-head,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
+    var groups='.section-head,.svc,.about-split,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
     document.querySelectorAll(groups).forEach(function(g){
       if(g.closest('.hero'))return;
       var kids=g.matches('.section-head,.cta-band .wrap,.infostrip .wrap')?[g]:Array.prototype.slice.call(g.children);
@@ -459,7 +593,16 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
   if(head){var hs=function(){head.classList.toggle('scrolled',window.scrollY>8);};hs();window.addEventListener('scroll',hs,{passive:true});}
   var b=document.getElementById('menuBtn'),n=document.getElementById('nav');
   if(b&&n)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu';});
-  document.querySelectorAll('a[data-missing]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();a.title='Link coming once Danielle sends it';});});
+  // Phone menu closes after a section link is tapped.
+  if(n)n.addEventListener('click',function(e){if(e.target.closest('a')&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded',false);b.textContent='Menu';}});
+  // Highlight the nav link for the section on screen.
+  var spy=document.querySelectorAll('[data-spy]');
+  if(spy.length&&'IntersectionObserver' in window){
+    var on=function(id){spy.forEach(function(a){a.toggleAttribute('aria-current',a.getAttribute('data-spy')===id);});};
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)on(e.target.id);});},{rootMargin:'-45% 0px -50% 0px'});
+    spy.forEach(function(a){var s=document.getElementById(a.getAttribute('data-spy'));if(s)so.observe(s);});
+    var top=document.querySelector('.hero');if(top)new IntersectionObserver(function(es){if(es[0].isIntersecting)on('');},{rootMargin:'-45% 0px -50% 0px'}).observe(top);
+  }
   var bar=document.querySelector('.book-bar'),hb=document.querySelector('.hero .btn-row');
   if(bar&&hb&&'IntersectionObserver' in window)new IntersectionObserver(function(e){bar.classList.toggle('tucked',e[0].isIntersecting);}).observe(hb);
   var f=document.getElementById('contactForm');

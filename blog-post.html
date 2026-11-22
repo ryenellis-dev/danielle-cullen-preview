@@ -318,13 +318,38 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
   .hero .lede { font-size: 0.98rem; line-height: 1.5; }
   .hero .btn { padding: 13px 18px; }
 }
+
+/* ---- One-page layout (2026-11-22) ---- */
+.anchor { scroll-margin-top: 76px; }
+h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
+.about-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 48px; align-items: start; }
+.sub-block { display: grid; gap: 16px; min-width: 0; }
+.svc { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.svc li { padding: 16px 20px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.svc li:last-child { border-bottom: 0; }
+.svc span { color: var(--muted); font-size: 0.95rem; }
+.res-wrap { display: grid; gap: 40px; }
+.res-wrap .section-head { margin-bottom: 0; }
+.need-box { margin-top: 36px; background: var(--todo-bg); border: 1.5px dashed #D9B97A; border-radius: var(--r); padding: 6px 20px; }
+.need-box summary { cursor: pointer; padding: 12px 0; font-weight: 600; color: var(--todo); }
+.need-box .need-list { padding-bottom: 16px; }
+.nav a[aria-current] { border-bottom-color: var(--sand); color: var(--sage-deep); }
+@media (max-width: 760px) { .about-split { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 36px; } }
+/* Collapse the nav into the menu button a little earlier, since it now has four links. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .nav .btn { display: inline-flex; margin-top: 12px; border-bottom: 1.5px solid var(--sage); }
+  .menu-btn { display: inline-flex; }
+}
 </style>
 </head>
 <body>
 <header class="site-head"><div class="wrap">
   <a class="brand" href="index.html"><span class="mark" aria-hidden="true">DC</span><span><span class="brand-name">Danielle Cullen<span class="brand-creds">, PMHNP-BC</span></span><span class="brand-sub">Psychiatric Nurse Practitioner</span></span></a>
-  <nav class="nav" id="nav" aria-label="Main"><a href="about.html">About</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a><a class="btn btn-primary btn-small" href="booking.html">Book a visit</a></nav>
-  <a class="btn btn-primary btn-small head-book" href="booking.html">Book a visit</a>
+  <nav class="nav" id="nav" aria-label="Main"><a href="index.html#about" data-spy="about">About</a><a href="index.html#fees" data-spy="fees">Insurance &amp; fees</a><a href="index.html#resources" data-spy="resources">Resources</a><a href="index.html#contact" data-spy="contact">Contact</a><a class="btn btn-primary btn-small" href="index.html#fees">Book a visit</a></nav>
+  <a class="btn btn-primary btn-small head-book" href="index.html#fees">Book a visit</a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
 </div></header>
 <main>
@@ -351,7 +376,7 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
       <p>A list of your current medications and doses, your insurance card, and any questions you want to ask.</p>
       <h2>What happens next</h2>
       <p>We agree on a plan together. That might include medication, therapy, lifestyle changes, or a mix. Follow-up visits are shorter and focus on how things are going.</p>
-      <div class="crisis" style="margin-top:32px">Ready to book? <a href="booking.html">Book with insurance or private pay</a>.</div>
+      <div class="crisis" style="margin-top:32px">Ready to book? <a href="index.html#fees">Book with insurance or private pay</a>.</div>
     </div>
   </article>
 </section>
@@ -363,18 +388,18 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
 </div></div>
 <footer class="site-foot"><div class="wrap">
   <div><p style="font-family:var(--serif);font-size:1.15rem;color:var(--ink)">Danielle Cullen, PMHNP-BC</p><p>Psychiatric Nurse Practitioner<br>Fishkill, NY 12524</p></div>
-  <div><h3>Visit</h3><ul><li><a href="booking.html#insurance">Book with insurance</a></li><li><a href="booking.html#private">Book private pay</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About the practice</a></li><li><a href="blog.html">Blog (coming soon)</a></li></ul></div>
-  <div><h3>Contact</h3><ul><li><a href="tel:+18455830173">(845) 583-0173</a></li><li><span class="todo-inline">hello@her-domain.com</span></li><li><a href="contact.html">Office &amp; hours</a></li></ul></div>
-  <p class="fine"><strong>In crisis?</strong> Call or text 988, or call 911. This practice is not an emergency service. · <a href="#" data-missing>Privacy</a> · <a href="#" data-missing>Notice of Privacy Practices</a> · <a href="#" data-missing>Good Faith Estimate</a> · © 2026 Danielle Cullen</p>
+  <div><h3>Visit</h3><ul><li><a href="index.html#fees">Book with insurance</a></li><li><a href="index.html#fees">Book private pay</a></li><li><a href="index.html#about">About the practice</a></li><li><a href="index.html#resources">Resources</a></li><li><a href="blog.html">Blog (coming soon)</a></li></ul></div>
+  <div><h3>Contact</h3><ul><li><a href="tel:+18455830173">(845) 583-0173</a></li><li><span class="todo-inline">hello@her-domain.com</span></li><li><a href="index.html#contact">Office &amp; hours</a></li></ul></div>
+  <p class="fine"><strong>In crisis?</strong> Call or text 988, or call 911. This practice is not an emergency service. · <a href="index.html#fees">Privacy</a> · <a href="index.html#fees">Notice of Privacy Practices</a> · <a href="index.html#fees">Good Faith Estimate</a> · © 2026 Danielle Cullen</p>
 </div></footer>
-<div class="book-bar"><a class="btn btn-primary" href="booking.html#insurance">Use insurance</a><a class="btn btn-secondary" href="booking.html#private">Private pay</a></div>
+<div class="book-bar"><a class="btn btn-primary" href="index.html#fees">Use insurance</a><a class="btn btn-secondary" href="index.html#fees">Private pay</a></div>
 <script>
 (function(){
   var root=document.documentElement,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Scroll reveal: sections and cards rise in gently as they enter the screen.
   if(!calm&&'IntersectionObserver' in window){
     root.classList.add('motion');
-    var groups='.section-head,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
+    var groups='.section-head,.svc,.about-split,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
     document.querySelectorAll(groups).forEach(function(g){
       if(g.closest('.hero'))return;
       var kids=g.matches('.section-head,.cta-band .wrap,.infostrip .wrap')?[g]:Array.prototype.slice.call(g.children);
@@ -391,7 +416,16 @@ span.todo-inline { background: var(--todo-bg); border-bottom: 1.5px dashed #D9B9
   if(head){var hs=function(){head.classList.toggle('scrolled',window.scrollY>8);};hs();window.addEventListener('scroll',hs,{passive:true});}
   var b=document.getElementById('menuBtn'),n=document.getElementById('nav');
   if(b&&n)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu';});
-  document.querySelectorAll('a[data-missing]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();a.title='Link coming once Danielle sends it';});});
+  // Phone menu closes after a section link is tapped.
+  if(n)n.addEventListener('click',function(e){if(e.target.closest('a')&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded',false);b.textContent='Menu';}});
+  // Highlight the nav link for the section on screen.
+  var spy=document.querySelectorAll('[data-spy]');
+  if(spy.length&&'IntersectionObserver' in window){
+    var on=function(id){spy.forEach(function(a){a.toggleAttribute('aria-current',a.getAttribute('data-spy')===id);});};
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)on(e.target.id);});},{rootMargin:'-45% 0px -50% 0px'});
+    spy.forEach(function(a){var s=document.getElementById(a.getAttribute('data-spy'));if(s)so.observe(s);});
+    var top=document.querySelector('.hero');if(top)new IntersectionObserver(function(es){if(es[0].isIntersecting)on('');},{rootMargin:'-45% 0px -50% 0px'}).observe(top);
+  }
   var bar=document.querySelector('.book-bar'),hb=document.querySelector('.hero .btn-row');
   if(bar&&hb&&'IntersectionObserver' in window)new IntersectionObserver(function(e){bar.classList.toggle('tucked',e[0].isIntersecting);}).observe(hb);
   var f=document.getElementById('contactForm');
