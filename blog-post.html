@@ -343,6 +343,12 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
   .nav .btn { display: inline-flex; margin-top: 12px; border-bottom: 1.5px solid var(--sage); }
   .menu-btn { display: inline-flex; }
 }
+.contact-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.contact-cards li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.contact-cards .label { font-size: 0.78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.contact-cards .value { font-size: 1.05rem; overflow-wrap: anywhere; }
+@media (max-width: 920px) { .contact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .contact-cards { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -399,7 +405,7 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
   // Scroll reveal: sections and cards rise in gently as they enter the screen.
   if(!calm&&'IntersectionObserver' in window){
     root.classList.add('motion');
-    var groups='.section-head,.svc,.about-split,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
+    var groups='.section-head,.contact-cards,.svc,.about-split,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
     document.querySelectorAll(groups).forEach(function(g){
       if(g.closest('.hero'))return;
       var kids=g.matches('.section-head,.cta-band .wrap,.infostrip .wrap')?[g]:Array.prototype.slice.call(g.children);
@@ -428,8 +434,6 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
   }
   var bar=document.querySelector('.book-bar'),hb=document.querySelector('.hero .btn-row');
   if(bar&&hb&&'IntersectionObserver' in window)new IntersectionObserver(function(e){bar.classList.toggle('tucked',e[0].isIntersecting);}).observe(hb);
-  var f=document.getElementById('contactForm');
-  if(f)f.addEventListener('submit',function(e){e.preventDefault();f.hidden=true;document.getElementById('formDone').hidden=false;});
 })();
 </script>
 </body>

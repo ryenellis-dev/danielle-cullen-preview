@@ -343,6 +343,12 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
   .nav .btn { display: inline-flex; margin-top: 12px; border-bottom: 1.5px solid var(--sage); }
   .menu-btn { display: inline-flex; }
 }
+.contact-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.contact-cards li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.contact-cards .label { font-size: 0.78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.contact-cards .value { font-size: 1.05rem; overflow-wrap: anywhere; }
+@media (max-width: 920px) { .contact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .contact-cards { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -531,33 +537,16 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
 <!-- ===== Contact ===== -->
 <section class="section anchor" id="contact">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow">Contact</p><h2>Get in touch</h2><p class="muted">Questions before booking? Call, email, or send a note.</p></div>
-    <div class="contact-grid">
-      <div style="display:grid;gap:24px;min-width:0">
-        <ul class="contact-list">
-          <li><div class="label">Phone</div><div class="value"><a href="tel:+18455830173">(845) 583-0173</a></div></li>
-          <li><div class="label">Email</div><div class="value"><span class="todo-inline">hello@her-domain.com</span></div></li>
-          <li><div class="label">Office</div><div class="value"><span class="todo-inline">Street address</span><br>Fishkill, NY 12524</div></li>
-          <li><div class="label">Hours</div><div class="value"><span class="todo-inline">Office hours</span></div></li>
-        </ul>
-        <div class="btn-row">
-          <a class="btn btn-primary btn-small" href="#fees">Book with insurance</a>
-          <a class="btn btn-secondary btn-small" href="#fees">Book private pay</a>
-        </div>
-      </div>
-      <div style="min-width:0">
-        <form class="card" id="contactForm" novalidate>
-          <h3 style="font-size:1.4rem">Send a note</h3>
-          <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="cContact">Phone or email</label><input id="cContact" name="contact" autocomplete="email" required></div>
-          <div class="field"><label for="cTopic">About</label><select id="cTopic" name="topic"><option>Becoming a new patient</option><option>Insurance question</option><option>Something else</option></select></div>
-          <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message"></textarea></div>
-          <p class="form-note">Please don't include health details. We'll talk about those privately.</p>
-          <button class="btn btn-primary" type="submit">Send</button>
-          <div class="todo ours">On the live site this form sends to her practice email. The demo doesn't send anything.</div>
-        </form>
-        <div class="form-done" id="formDone" hidden>Thanks. We'll get back to you within one business day. (Demo: nothing was sent.)</div>
-      </div>
+    <div class="section-head"><p class="eyebrow">Contact</p><h2>Get in touch</h2><p class="muted">Questions before booking? Call or email.</p></div>
+    <ul class="contact-cards">
+      <li><div class="label">Phone</div><div class="value"><a href="tel:+18455830173">(845) 583-0173</a></div></li>
+      <li><div class="label">Email</div><div class="value"><span class="todo-inline">hello@her-domain.com</span></div></li>
+      <li><div class="label">Office</div><div class="value"><span class="todo-inline">Street address</span><br>Fishkill, NY 12524</div></li>
+      <li><div class="label">Hours</div><div class="value"><span class="todo-inline">Office hours</span></div></li>
+    </ul>
+    <div class="btn-row" style="margin-top:28px">
+      <a class="btn btn-primary" href="#fees">Book with insurance</a>
+      <a class="btn btn-secondary" href="#fees">Book private pay</a>
     </div>
   </div>
 </section>
@@ -576,7 +565,7 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
   // Scroll reveal: sections and cards rise in gently as they enter the screen.
   if(!calm&&'IntersectionObserver' in window){
     root.classList.add('motion');
-    var groups='.section-head,.svc,.about-split,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
+    var groups='.section-head,.contact-cards,.svc,.about-split,.grid-3,.grid-2,.tags,.paths,.res-list,.crisis-cards,.posts,.faq,.need-list,.facts,.contact-list,.cta-band .wrap,.infostrip .wrap';
     document.querySelectorAll(groups).forEach(function(g){
       if(g.closest('.hero'))return;
       var kids=g.matches('.section-head,.cta-band .wrap,.infostrip .wrap')?[g]:Array.prototype.slice.call(g.children);
@@ -605,8 +594,6 @@ h3.sub { font-size: 1.45rem; margin-bottom: 4px; }
   }
   var bar=document.querySelector('.book-bar'),hb=document.querySelector('.hero .btn-row');
   if(bar&&hb&&'IntersectionObserver' in window)new IntersectionObserver(function(e){bar.classList.toggle('tucked',e[0].isIntersecting);}).observe(hb);
-  var f=document.getElementById('contactForm');
-  if(f)f.addEventListener('submit',function(e){e.preventDefault();f.hidden=true;document.getElementById('formDone').hidden=false;});
 })();
 </script>
 </body>
